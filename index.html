@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Life Dashboard untuk mengatur fokus, tugas, dan tautan penting.">
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Lewati ke konten</a>
+
+  <div class="page-shell">
+    <header class="topbar" aria-label="Header dashboard">
+      <a class="brand" href="#top" aria-label="Life Dashboard, kembali ke atas">
+        <span class="brand-mark" aria-hidden="true">L</span>
+        <span>Life Dashboard</span>
+      </a>
+      <div class="topbar-actions">
+        <button class="icon-button" id="edit-name-button" type="button" aria-label="Ubah nama pengguna" title="Ubah nama">Aa</button>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Aktifkan tema gelap" title="Ubah tema">
+          <span id="theme-icon" aria-hidden="true">☾</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="greeting-title">
+        <div>
+          <p class="eyebrow" id="date-display">Memuat tanggal</p>
+          <h1 id="greeting-title">Selamat datang.</h1>
+          <p class="hero-copy">Satu tempat untuk menjaga arah hari ini.</p>
+        </div>
+        <div class="live-clock" aria-label="Waktu saat ini">
+          <span class="clock-label">SEKARANG</span>
+          <time id="clock-display" datetime="">00:00</time>
+        </div>
+      </section>
+
+      <section class="dashboard-grid" aria-label="Fitur dashboard">
+        <article class="panel focus-panel" aria-labelledby="focus-title">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">01 · FOKUS</p>
+              <h2 id="focus-title">Satu sesi, satu tujuan.</h2>
+            </div>
+            <span class="status-pill" id="timer-status" aria-live="polite">Siap</span>
+          </div>
+
+          <div class="timer-layout">
+            <div class="timer-orbit" aria-label="Sisa waktu fokus">
+              <div class="timer-center">
+                <span class="timer-label">WAKTU FOKUS</span>
+                <time id="timer-display" datetime="PT25M">25:00</time>
+              </div>
+            </div>
+            <div class="timer-side">
+              <p id="timer-message">Pilih durasi, lalu mulai saat siap.</p>
+              <div class="timer-controls" aria-label="Kontrol timer">
+                <button class="button button-primary" id="start-timer" type="button">Mulai</button>
+                <button class="button button-secondary" id="pause-timer" type="button" disabled>Jeda</button>
+                <button class="text-button" id="reset-timer" type="button">Atur ulang</button>
+              </div>
+            </div>
+          </div>
+
+          <form class="duration-form" id="duration-form">
+            <label for="focus-minutes">Durasi fokus <span>(menit)</span></label>
+            <div class="duration-control">
+              <button class="duration-chip" type="button" data-minutes="15">15</button>
+              <button class="duration-chip is-selected" type="button" data-minutes="25">25</button>
+              <button class="duration-chip" type="button" data-minutes="45">45</button>
+              <input id="focus-minutes" name="focus-minutes" type="number" min="5" max="180" value="25" inputmode="numeric" aria-label="Durasi fokus khusus dalam menit">
+              <button class="button button-secondary button-compact" type="submit">Simpan</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="panel tasks-panel" aria-labelledby="tasks-title">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">02 · TUGAS</p>
+              <h2 id="tasks-title">Penting untuk hari ini.</h2>
+            </div>
+            <span class="task-count" id="task-count">0 tugas</span>
+          </div>
+
+          <form class="add-form" id="task-form">
+            <label class="sr-only" for="task-input">Tugas baru</label>
+            <input id="task-input" name="task" type="text" maxlength="120" autocomplete="off" placeholder="Contoh: Selesaikan proposal tesis">
+            <button class="button button-primary" type="submit">Tambah</button>
+          </form>
+          <p class="form-message" id="task-message" aria-live="polite"></p>
+          <ul class="task-list" id="task-list" aria-label="Daftar tugas"></ul>
+          <p class="empty-state" id="tasks-empty">Belum ada tugas. Tambahkan satu langkah kecil untuk mulai.</p>
+        </article>
+
+        <article class="panel links-panel" aria-labelledby="links-title">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">03 · TAUTAN CEPAT</p>
+              <h2 id="links-title">Buka ruang kerja Anda.</h2>
+            </div>
+          </div>
+
+          <ul class="quick-links" id="quick-links-list" aria-label="Tautan cepat"></ul>
+          <p class="empty-state" id="links-empty">Belum ada tautan. Simpan situs yang sering dibuka.</p>
+
+          <form class="link-form" id="link-form">
+            <div class="form-grid">
+              <div>
+                <label for="link-name-input">Nama</label>
+                <input id="link-name-input" name="link-name" type="text" maxlength="40" autocomplete="off" placeholder="GitHub">
+              </div>
+              <div>
+                <label for="link-url-input">URL</label>
+                <input id="link-url-input" name="link-url" type="url" autocomplete="off" placeholder="https://github.com">
+              </div>
+            </div>
+            <button class="button button-secondary" type="submit">Simpan tautan</button>
+          </form>
+          <p class="form-message" id="link-message" aria-live="polite"></p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Life Dashboard · Dibuat untuk fokus yang lebih terarah.</p>
+    </footer>
+  </div>
+
+  <dialog class="name-dialog" id="name-dialog" aria-labelledby="name-dialog-title">
+    <form method="dialog" id="name-form">
+      <button class="dialog-close" type="button" id="close-name-dialog" aria-label="Tutup dialog">×</button>
+      <p class="section-kicker">PERSONALISASI</p>
+      <h2 id="name-dialog-title">Siapa nama Anda?</h2>
+      <p>Nama ini muncul pada salam dashboard dan tersimpan di browser.</p>
+      <label for="name-input">Nama panggilan</label>
+      <input id="name-input" name="name" type="text" maxlength="30" autocomplete="name" placeholder="Contoh: Ishak" required>
+      <div class="dialog-actions">
+        <button class="button button-secondary" type="button" id="skip-name-button">Nanti saja</button>
+        <button class="button button-primary" type="submit">Simpan nama</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
